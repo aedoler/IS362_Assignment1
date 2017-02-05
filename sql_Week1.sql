@@ -51,7 +51,7 @@ GROUP BY p.manufacturer;
 #-----Question 4-----
 /*This query lists the average arrival delay for American Airlines flights
 at all destinations from New York airports in the month of July, 2013
-list from greatest to least delay.*/
+listed from greatest to least delay.*/
 SELECT f.month AS Month, AVG(f.arr_delay) AS 'Average arrival delay', ap.name AS 'Airport'
 FROM flights as f
 INNER JOIN airlines AS a
