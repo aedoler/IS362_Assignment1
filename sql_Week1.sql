@@ -49,18 +49,19 @@ AND f.day = 5
 GROUP BY p.manufacturer;
 
 #-----Question 4-----
-/*This query lists the average departure delay for American Airlines
-from JFK airport for each month of the year 2013*/
-SELECT f.month AS Month, AVG(f.dep_delay) AS 'Average delay'
+/*This query lists the average arrival delay for American Airlines flights
+at all destinations from New York airports in the month of July, 2013
+list from greatest to least delay.*/
+SELECT f.month AS Month, AVG(f.arr_delay) AS 'Average arrival delay', ap.name AS 'Airport'
 FROM flights as f
 INNER JOIN airlines AS a
 ON a.carrier = f.carrier
 INNER JOIN airports AS ap
-ON f.origin = ap.faa
-WHERE f.origin = 'JFK'
+ON f.dest = ap.faa
+WHERE f.month = 7
 AND a.carrier = 'AA'
-GROUP BY f.month
-ORDER BY AVG(f.dep_delay) DESC;
+GROUP BY f.month, ap.name
+ORDER BY AVG(f.arr_delay) DESC;
 
 #**********PART 2**********
 #URL TO PUBLIC TABLEAU WORKBOOK:
