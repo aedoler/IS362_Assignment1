@@ -66,9 +66,9 @@ ORDER BY AVG(f.dep_delay) DESC;
 #URL TO PUBLIC TABLEAU WORKBOOK:
 # https://public.tableau.com/profile/alexander.doler#!/vizhome/Comparisionofaverageflightdelays/Dashboard1
 
-/*I am unable to export data into a .csv due to an Error 1290 that I am unable to resolve
-The below is a query that I would use to export data into a .csv file
-In this case, I impported the full .csv files in Tableau
+/*I am unable to export data into a .csv by query due to an Error 1290, which I am unable to resolve
+However, the below is a query that I would use to export data into a .csv file
+For this assignment, I impported the full .csv files in Tableau
 */
 
 SELECT f.month AS Month, AVG(f.dep_delay) AS 'Average delay'
@@ -80,6 +80,7 @@ FROM flights as f
 INNER JOIN airlines AS a
 ON a.carrier = f.carrier
 WHERE f.origin = 'JFK'
+AND a.carrier = 'AA'
 GROUP BY f.month
 ORDER BY month;
 
@@ -92,5 +93,6 @@ FROM flights as f
 INNER JOIN airlines AS a
 ON a.carrier = f.carrier
 WHERE f.origin = 'LGA'
+AND a.carrier = 'DL'
 GROUP BY f.month
 ORDER BY month DESC;
